@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="860" viewBox="-160 -180 320 445">
+  <!--
+    RoboSoccer LASER-CUT BASE (top view) - all dimensions in millimetres, 1 user unit = 1 mm.
+      * Chassis disc: 210 mm diameter (under the 220 mm RCJA cylinder rule)
+      * 3x omni wheels: 65 mm dia, 120 deg apart (kiwi drive)
+      * Wheel slots ENLARGED so each wheel's OUTER EDGE sits on the 210 mm circle
+      * Driven by a SERVO with an OFFSET / protruding output hub (not a centred DC motor shaft)
+      * Servo body 40 x 20 x 37.5 mm, overall flange length 54.5 mm,
+        mounting-hole spacing 49.5 mm, flange ear 10 mm, height to horn 44.5 mm
+    Red  = cut lines.  Blue = servo body.  Grey = wheel.  Yellow = output hub/axle.
+  -->
+
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#c0392b"/>
+    </marker>
+    <marker id="arrowR" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+      <path d="M7,0 L0,3.5 L7,7 Z" fill="#c0392b"/>
+    </marker>
+
+    <!-- One drive arm (servo + offset hub + omni wheel + slot), pointing UP -->
+    <g id="arm">
+      <!-- Wheel slot: cut, enlarged, outer edge reaches the 210 perimeter -->
+      <rect x="-37" y="-108" width="74" height="30" rx="3"
+            fill="#ffffff" stroke="#c0392b" stroke-width="1"/>
+
+      <!-- Servo body 40 x 20 (lies flat, output end facing the wheel) -->
+      <rect x="-10" y="-90" width="20" height="40" rx="1.5"
+            fill="#2980b9" fill-opacity="0.85" stroke="#1b4f72" stroke-width="1"/>
+      <!-- flange ears -> overall 54.5 -->
+      <rect x="-9" y="-97.25" width="18" height="7.25" fill="#2980b9" fill-opacity="0.55" stroke="#1b4f72" stroke-width="0.6"/>
+      <rect x="-9" y="-50"    width="18" height="7.25" fill="#2980b9" fill-opacity="0.55" stroke="#1b4f72" stroke-width="0.6"/>
+      <!-- mounting holes @ 49.5 spacing (M2.5/M3) -->
+      <circle cx="0" cy="-94.75" r="1.6" fill="#fff" stroke="#c0392b" stroke-width="0.8"/>
+      <circle cx="0" cy="-45.25" r="1.6" fill="#fff" stroke="#c0392b" stroke-width="0.8"/>
+
+      <!-- Offset / protruding output hub (drives the wheel out at the rim) -->
+      <line x1="0" y1="-90" x2="0" y2="-97" stroke="#7f8c8d" stroke-width="2"/>
+      <circle cx="0" cy="-97" r="4.5" fill="#f1c40f" stroke="#1c2833" stroke-width="1"/>
+
+      <!-- Omni wheel Ø65 (edge-on); outer rim flush with Ø210 -->
+      <rect x="-32.5" y="-105" width="65" height="15" rx="2"
+            fill="#34495e" fill-opacity="0.92" stroke="#1c2833" stroke-width="1.2"/>
+      <g stroke="#95a5a6" stroke-width="1">
+        <line x1="-26" y1="-104" x2="-26" y2="-91"/>
+        <line x1="-13" y1="-104" x2="-13" y2="-91"/>
+        <line x1="0"   y1="-104" x2="0"   y2="-91"/>
+        <line x1="13"  y1="-104" x2="13"  y2="-91"/>
+        <line x1="26"  y1="-104" x2="26"  y2="-91"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- Title -->
+  <text x="0" y="-162" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="bold">
+    Laser-cut base - &#216;210, 3x &#216;65 omni (kiwi), servo drive w/ offset hub
+  </text>
+
+  <!-- Chassis disc (CUT) -->
+  <circle cx="0" cy="0" r="105" fill="#eaf2f8" stroke="#c0392b" stroke-width="1.6"/>
+
+  <!-- centre marks -->
+  <line x1="-8" y1="0" x2="8" y2="0" stroke="#555" stroke-width="0.8"/>
+  <line x1="0" y1="-8" x2="0" y2="8" stroke="#555" stroke-width="0.8"/>
+  <circle cx="0" cy="0" r="2" fill="#555"/>
+
+  <!-- 120 deg reference spokes -->
+  <g stroke="#aac4dd" stroke-width="0.7" stroke-dasharray="4 3">
+    <line x1="0" y1="0" x2="0" y2="-105"/>
+    <line x1="0" y1="0" x2="90.93" y2="52.5"/>
+    <line x1="0" y1="0" x2="-90.93" y2="52.5"/>
+  </g>
+
+  <!-- Diameter dimension -->
+  <line x1="-105" y1="0" x2="105" y2="0" stroke="#c0392b" stroke-width="0.8"
+        marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+  <rect x="-15" y="-9" width="30" height="13" fill="#eaf2f8"/>
+  <text x="0" y="0" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#c0392b">&#216;210</text>
+
+  <!-- Three drive arms -->
+  <use href="#arm" transform="rotate(0)"/>
+  <use href="#arm" transform="rotate(120)"/>
+  <use href="#arm" transform="rotate(240)"/>
+
+  <!-- Arm numbers -->
+  <g font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">
+    <text x="0" y="-118">1</text>
+    <text x="102" y="60">2</text>
+    <text x="-102" y="60">3</text>
+  </g>
+
+  <!-- note -->
+  <text x="0" y="120" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#444">
+    Wheel outer edge tangent to &#216;210. Offset hub lets the wheel reach the rim while the servo body stays inboard.
+  </text>
+
+  <!-- ===================== SERVO DIMENSION DETAIL ===================== -->
+  <g font-family="sans-serif">
+    <text x="0" y="150" text-anchor="middle" font-size="9" font-weight="bold">Servo dimensions (mm)</text>
+
+    <!-- TOP VIEW -->
+    <g transform="translate(-127,165)">
+      <text x="27" y="-3" text-anchor="middle" font-size="7" fill="#555">top</text>
+      <!-- flanges + body -->
+      <rect x="0" y="6" width="7.25" height="8" fill="#cfe2f3" stroke="#1b4f72" stroke-width="0.6"/>
+      <rect x="47.25" y="6" width="7.25" height="8" fill="#cfe2f3" stroke="#1b4f72" stroke-width="0.6"/>
+      <rect x="7.25" y="0" width="40" height="20" fill="#2980b9" fill-opacity="0.85" stroke="#1b4f72" stroke-width="0.8"/>
+      <!-- offset output hub (~10 mm from output end) -->
+      <circle cx="37.25" cy="10" r="6" fill="#f1c40f" stroke="#1c2833" stroke-width="0.7"/>
+      <circle cx="37.25" cy="10" r="1.3" fill="#1c2833"/>
+      <!-- mounting holes @ 49.5 -->
+      <circle cx="2.5" cy="10" r="1.4" fill="#fff" stroke="#c0392b" stroke-width="0.7"/>
+      <circle cx="52" cy="10" r="1.4" fill="#fff" stroke="#c0392b" stroke-width="0.7"/>
+      <!-- dims -->
+      <line x1="0" y1="26" x2="54.5" y2="26" stroke="#c0392b" stroke-width="0.6" marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+      <text x="27.25" y="32" text-anchor="middle" font-size="6" fill="#c0392b">54.5</text>
+      <line x1="2.5" y1="20.5" x2="52" y2="20.5" stroke="#c0392b" stroke-width="0.6" marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+      <text x="27.25" y="19.3" text-anchor="middle" font-size="6" fill="#c0392b">49.5</text>
+      <line x1="0" y1="-1" x2="7.25" y2="-1" stroke="#c0392b" stroke-width="0.6" marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+      <text x="3.6" y="-3.5" text-anchor="middle" font-size="6" fill="#c0392b">10</text>
+      <text x="37.25" y="-3.5" text-anchor="middle" font-size="6" fill="#7a5b00">offset hub</text>
+    </g>
+
+    <!-- SIDE VIEW -->
+    <g transform="translate(-40,165)">
+      <text x="20" y="-3" text-anchor="middle" font-size="7" fill="#555">side</text>
+      <rect x="0" y="7" width="40" height="37.5" fill="#2980b9" fill-opacity="0.85" stroke="#1b4f72" stroke-width="0.8"/>
+      <!-- horn boss to 44.5 -->
+      <rect x="25" y="0" width="10" height="7" fill="#f1c40f" stroke="#1c2833" stroke-width="0.6"/>
+      <!-- dims -->
+      <line x1="0" y1="50" x2="40" y2="50" stroke="#c0392b" stroke-width="0.6" marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+      <text x="20" y="56" text-anchor="middle" font-size="6" fill="#c0392b">40</text>
+      <line x1="46" y1="7" x2="46" y2="44.5" stroke="#c0392b" stroke-width="0.6" marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+      <text x="49" y="28" font-size="6" fill="#c0392b">37.5</text>
+      <line x1="56" y1="0" x2="56" y2="44.5" stroke="#c0392b" stroke-width="0.6" marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+      <text x="59" y="24" font-size="6" fill="#c0392b">44.5</text>
+    </g>
+
+    <!-- FRONT VIEW -->
+    <g transform="translate(55,165)">
+      <text x="10" y="-3" text-anchor="middle" font-size="7" fill="#555">front</text>
+      <rect x="0" y="7" width="20" height="37.5" fill="#2980b9" fill-opacity="0.85" stroke="#1b4f72" stroke-width="0.8"/>
+      <rect x="5" y="0" width="10" height="7" fill="#f1c40f" stroke="#1c2833" stroke-width="0.6"/>
+      <line x1="0" y1="50" x2="20" y2="50" stroke="#c0392b" stroke-width="0.6" marker-start="url(#arrowR)" marker-end="url(#arrow)"/>
+      <text x="10" y="56" text-anchor="middle" font-size="6" fill="#c0392b">20</text>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <g font-family="sans-serif" font-size="7.5">
+    <rect x="-150" y="232" width="300" height="28" rx="3" fill="#fff" stroke="#999" stroke-width="0.7"/>
+    <rect x="-145" y="238" width="10" height="7" fill="#34495e"/>
+    <text x="-132" y="244">Omni &#216;65</text>
+    <rect x="-92" y="238" width="10" height="7" fill="#2980b9" fill-opacity="0.85"/>
+    <text x="-79" y="244">Servo body 40x20</text>
+    <circle cx="-18" cy="241.5" r="3.5" fill="#f1c40f" stroke="#1c2833" stroke-width="0.5"/>
+    <text x="-10" y="244">Offset output hub</text>
+    <line x1="62" y1="241.5" x2="74" y2="241.5" stroke="#c0392b" stroke-width="1"/>
+    <text x="78" y="244">Cut line / holes</text>
+    <text x="-145" y="255">Mounting holes @ 49.5 spacing - outer screw sits near the wheel; use a standoff/recess for clearance.</text>
+  </g>
+</svg>
