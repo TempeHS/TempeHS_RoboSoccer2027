@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="-120 -120 240 240">
+  <!--
+    RoboSoccer KIWI DRIVE base - LASER CUT FILE (cut lines only). 1 user unit = 1 mm.
+      * Chassis: 210 mm dia disc (R = 105), under the 220 mm RCJA rule.
+      * 3 wheel pockets at 0 / 120 / 240 deg, MERGED into the perimeter as open
+        notches -> the outer edge is a SINGLE cut (no crossover of rim + recess).
+      * Wheel pocket: 74 mm wide, inner edge straight at r = 75 (30 mm deep on the
+        centre-line); walls meet the rim at x = +/-37, y = -98.265.
+      * The side BETWEEN TWO WHEELS (bottom here) is a STRAIGHT chord, not an arc -
+        this flat is the ball-dribbler edge for the soccer robot.
+      * Servo mount = 4x M3 holes (Ø3.0): 67.5 mm (tangential) x 16.5 mm (radial),
+        outer row 6.5 mm back from the pocket inner edge, whole pattern shifted
+        +10 mm in X for the OFFSET servo axle (kept square with the wheel).
+    fill=none, stroke = cut. Set your laser to cut every stroke.
+  -->
+
+  <defs>
+    <!-- 4 servo-mount holes for one arm (pointing UP, -Y). -->
+    <g id="holes">
+      <circle cx="-23.75" cy="-68.5" r="1.5" fill="none" stroke="#c0392b" stroke-width="0.5"/>
+      <circle cx="43.75"  cy="-68.5" r="1.5" fill="none" stroke="#c0392b" stroke-width="0.5"/>
+      <circle cx="-23.75" cy="-52.0" r="1.5" fill="none" stroke="#c0392b" stroke-width="0.5"/>
+      <circle cx="43.75"  cy="-52.0" r="1.5" fill="none" stroke="#c0392b" stroke-width="0.5"/>
+    </g>
+  </defs>
+
+  <!-- Single continuous perimeter: rim arcs + 3 open wheel pockets, with the
+       bottom side a straight dribbler edge. -->
+  <path d="M -37,-98.265
+           L -37,-75 L 37,-75 L 37,-98.265
+           A 105 105 0 0 1 103.594,17.090
+           L 83.452,5.457 L 46.452,69.543 L 66.594,81.175
+           L -66.594,81.175
+           L -46.452,69.543 L -83.452,5.457 L -103.594,17.090
+           A 105 105 0 0 1 -37,-98.265 Z"
+        fill="none" stroke="#c0392b" stroke-width="0.5"/>
+
+  <!-- Three servo-mount hole sets at 0, 120, 240 deg -->
+  <use href="#holes" transform="rotate(0)"/>
+  <use href="#holes" transform="rotate(120)"/>
+  <use href="#holes" transform="rotate(240)"/>
+</svg>
