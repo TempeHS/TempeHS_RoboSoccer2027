@@ -24,9 +24,7 @@
         },
         "python.terminal.activateEnvironment": false,
         "micropico.openOnStart": true,
-        "python.analysis.typeshedPaths": [
-          "~/.micropico-stubs/included"
-        ],
+        "python.analysis.typeshedPaths": ["~/.micropico-stubs/included"],
         "python.analysis.extraPaths": [
           "~/.micropico-stubs/included",
           "./examples/smooth_"
@@ -40,7 +38,7 @@
           "css": false,
           "SQL": false
         },
-        "chat.agent.enabled": false
+        "chat.agent.enabled": true
       },
       "extensions": [
         "bierner.markdown-mermaid",
