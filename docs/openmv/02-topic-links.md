@@ -46,6 +46,90 @@ What students should deliver:
 - Ball center x,y output each frame
 - Confidence checks (ignore tiny or noisy detections)
 
+## Calculating the ball's position on the field
+
+Goal: turn the ball's **size** and **location on the screen** into a real
+position on the field. This works because we keep the robot **facing forward**
+using the gyroscope, so the camera always points the same way. That makes the
+maths much simpler - we only have to work out how far away the ball is and how
+far left/right it is, then add that to where the robot is on the field.
+
+### The two things we measure from the image
+
+1. **How big the ball looks** (its diameter in pixels) -> tells us **distance**.
+2. **Where the ball sits left/right of the image centre** -> tells us **bearing**
+   (the sideways angle to the ball).
+
+### Step 1 - distance from ball size (similar triangles)
+
+A ball that is close looks big; a ball that is far looks small. Because the real
+ball size never changes, we can use the "similar triangles" rule:
+
+```
+Z = (f * D) / d
+```
+
+- `Z` = distance from the camera to the ball (mm)
+- `f` = camera focal length **in pixels** (you get this from camera calibration)
+- `D` = real ball diameter (mm) - the RCJ IR ball is 74 mm; the small 2027 / Open ball is 42 mm
+- `d` = ball diameter **in pixels** measured in the image this frame
+
+Example: if `f = 200 px`, `D = 74 mm`, and the ball measures `d = 40 px`, then
+`Z = 200 * 74 / 40 = 370 mm` away.
+
+### Step 2 - sideways angle (bearing) from screen position
+
+Use how far the ball centre is from the middle of the image:
+
+```
+bearing = atan2( (ball_x - cx), f )
+```
+
+- `ball_x` = ball centre x in pixels (from your blob/circle detection)
+- `cx` = image centre x in pixels (image width / 2)
+- `bearing` = angle to the ball (radians); 0 = straight ahead, positive = one side
+
+### Step 3 - convert to field coordinates
+
+Because the gyro keeps us facing forward, the ball offset from the robot is:
+
+```
+offset_x = Z * sin(bearing)     # left/right
+offset_y = Z * cos(bearing)     # forward
+
+ball_field_x = robot_x + offset_x
+ball_field_y = robot_y + offset_y
+```
+
+If the robot can rotate, add the gyro heading: replace `bearing` with
+`heading + bearing` before the sin/cos step.
+
+### Why calibration matters
+
+`f` (focal length) and `cx`, `cy` (the true image centre) come from a one-time
+**camera calibration**. Without it your distances will be wrong. Lens distortion
+also bends straight lines near the edges, so calibrate and (if needed) undistort.
+
+- Camera calibration: https://docs.openmv.io/openmvcam/tutorial/vision/sensor/calibration.html
+- Lens and perspective: https://docs.openmv.io/openmvcam/tutorial/image/transforms/lens-and-perspective.html
+- Math module (sin, cos, atan2, sqrt): https://docs.openmv.io/library/math.html
+
+### Make it reliable (tips)
+
+- Measure `d` from the **blob width/height** or fitted circle radius (use the
+  more stable one for your ball).
+- **Average** distance over a few frames - a single frame can be noisy.
+- Throw away detections that are too small or the wrong shape (low confidence).
+- The ball sitting on the floor is slightly **below** the camera; if you need
+  more accuracy, also use the ball's `y` position to estimate ground distance.
+- Re-check `D` for the ball your league actually uses (74 mm vs 42 mm).
+
+What students should deliver:
+
+- A function that returns ball distance `Z` and bearing each frame
+- Ball field position `(ball_field_x, ball_field_y)` using the gyro heading
+- A short test: place the ball at known spots and compare measured vs real distance
+
 ## Goal finding
 
 Official links:
