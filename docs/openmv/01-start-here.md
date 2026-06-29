@@ -11,9 +11,15 @@ Build a robot that can:
 - Communicate with team robots
 - Drive with a 3-wheel Kiwi drive and stay stable using PID control
 
+<hr>
+
 ## What to learn first
 
 ### 1. OpenMV basics and first script
+
+> [!WARNING]
+> The script in Quickstart **1.3. Run your first script** should be skipped.  
+> Running the default command in the script may unintentionally result in heap exhaustion and CPU overload.
 
 - Quickstart: https://docs.openmv.io/openmvcam/tutorial/quickstart.html
 - Python basics for OpenMV: https://docs.openmv.io/openmvcam/tutorial/python/index.html
