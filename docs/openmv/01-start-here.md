@@ -13,19 +13,20 @@ Build a robot that can:
 
 ## What to learn first
 
-1. OpenMV basics and first script
+### 1. OpenMV basics and first script
 
 - Quickstart: https://docs.openmv.io/openmvcam/tutorial/quickstart.html
 - Python basics for OpenMV: https://docs.openmv.io/openmvcam/tutorial/python/index.html
 
-2. Camera and vision basics
+
+### 2. Camera and vision basics
 
 - Vision fundamentals: https://docs.openmv.io/openmvcam/tutorial/vision/index.html
 - Image processing tutorial: https://docs.openmv.io/openmvcam/tutorial/image/index.html
 - OpenMV image API reference: https://docs.openmv.io/library/omv.image.html
 - OpenMV sensor API reference: https://docs.openmv.io/library/omv.sensor.html
 
-3. Hardware and board quick reference
+### 3. Hardware and board quick reference
 
 - Camera quick reference pages: https://docs.openmv.io/openmvcam/quickref.html
 
