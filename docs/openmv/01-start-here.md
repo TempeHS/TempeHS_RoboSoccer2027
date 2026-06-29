@@ -18,8 +18,8 @@ Build a robot that can:
 ### 1. OpenMV basics and first script
 
 > [!WARNING]
-> The script in Quickstart **1.3. Run your first script** should be skipped.  
-> Running the default command in the script may unintentionally result in heap exhaustion and CPU overload, causing heatup and connection issues.
+> **Skip the default script in Quickstart 1.3.**
+> Running the default script can result in connection issues due to heap exhaustion.
 
 - Quickstart: https://docs.openmv.io/openmvcam/tutorial/quickstart.html
 - Python basics for OpenMV: https://docs.openmv.io/openmvcam/tutorial/python/index.html
